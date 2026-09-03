@@ -33,9 +33,10 @@
 <div id="list"></div>
 
 <script>
-const PASSWORD = 'ossainvite2026'; // <-- must match the ADMIN_TOKEN on the server/Netlify
+let adminToken = ''; // set on login; sent to the server for validation
 
 function logout() {
+  adminToken = '';
   sessionStorage.removeItem('admin');
   showLogin();
 }
@@ -54,13 +55,14 @@ function showAdmin() {
 async function login() {
   const val = document.getElementById('password').value;
   const err = document.getElementById('loginError');
-  if (val === PASSWORD) {
-    sessionStorage.setItem('admin', '1');
-    err.textContent = '';
-    showAdmin();
-  } else {
-    err.textContent = 'Incorrect password';
+  if (!val.trim()) {
+    err.textContent = 'Enter the admin password';
+    return;
   }
+  adminToken = val.trim();
+  err.textContent = '';
+  sessionStorage.setItem('admin', '1');
+  await showAdmin();
 }
 
 function apiUrl() {
@@ -72,16 +74,17 @@ async function loadMessages() {
   const count = document.getElementById('count');
   if (window.location.protocol === 'file:') {
     count.textContent = '';
-    list.innerHTML = '<div class="error">Open this page through your hosted site or the local server, not as a file.</div>';
+    list.innerHTML = '<div class="error">Open this page through your hosted site, not as a file.</div>';
     return;
   }
   try {
     const res = await fetch(apiUrl(), {
-      headers: { 'x-admin-token': PASSWORD }
+      headers: { 'x-admin-token': adminToken }
     });
     if (res.status === 401) {
+      sessionStorage.removeItem('admin');
       count.textContent = '';
-      list.innerHTML = '<div class="error">Wrong admin password. Check that the password in admin.html matches the ADMIN_TOKEN on the server.</div>';
+      list.innerHTML = '<div class="error">Wrong admin password.</div>';
       return;
     }
     if (!res.ok) throw new Error('bad response');
@@ -115,7 +118,7 @@ document.getElementById('password').addEventListener('keydown', e => {
   if (e.key === 'Enter') login();
 });
 
-if (sessionStorage.getItem('admin') === '1') showAdmin();
+if (sessionStorage.getItem('admin') === '1') showLogin(); // require re-login each visit
 else showLogin();
 </script>
 </body>

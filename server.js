@@ -5,7 +5,7 @@ const { URL } = require('url');
 
 const ROOT = __dirname;
 const MESSAGES_FILE = path.join(ROOT, 'messages.txt');
-const ADMIN_PASSWORD = 'ossainvite2026'; // <-- CHANGE THIS
+const ADMIN_PASSWORD = process.env.ADMIN_TOKEN || 'change-me-to-match-your-admin-token';
 
 const MIME = {
   '.html': 'text/html; charset=utf-8',

@@ -28,7 +28,7 @@ These same values live (already filled in) in the local **`.env.local`** file �
 
 ### 2. Set the admin password to match
 The admin page sends the password as the admin token. **They must match**:
-- `admin.html` → `const PASSWORD = 'ossainvite2026';`
+- `admin.html` → `const PASSWORD = 'your_admin_token_here';` (use the same value as `ADMIN_TOKEN`)
 - `ADMIN_TOKEN` env var above = the same value
 
 ### 3. Deploy your site
