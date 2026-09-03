@@ -19,7 +19,7 @@ const INVITATION = {
     { time: '18:30', title: 'Dinner', text: 'Dîner et célébration' },
     { time: '20:00', title: 'Party', text: 'Musique et danse' }
   ],
-  gallery: ['assets/IMG-20241213-WA0011.jpg','assets/IMG-20250314-WA0041.jpg','assets/IMG-20250413-WA0034.jpg','assets/IMG-20250701-WA0047.jpg','assets/IMG_4517.JPG','assets/IMG_8324.JPG','assets/IMG_0374.png','assets/IMG_0551.png','assets/IMG_3009.png','assets/IMG_4833.png','assets/IMG_4970.png','assets/IMG_5067.png','assets/IMG_8757.png','assets/IMG_8789.png'],
+  gallery: ['assets/IMG-20241213-WA0011.jpg','assets/IMG-20250314-WA0041.jpg','assets/IMG-20250413-WA0034.jpg','assets/IMG-20250701-WA0047.jpg','assets/IMG_4517.jpg','assets/IMG_8324.jpg','assets/IMG_0374.jpg','assets/IMG_0551.jpg','assets/IMG_3009.jpg','assets/IMG_4833.jpg','assets/IMG_4970.jpg','assets/IMG_5067.jpg','assets/IMG_8757.jpg','assets/IMG_8789.jpg'],
   splash: {
     enabled: true,
     duration: 4200,

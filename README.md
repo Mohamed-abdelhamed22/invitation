@@ -68,7 +68,7 @@ Change the local password in both places so they match:
 Edit **`config.js`**. You can change names, date, venue, Arabic text, timeline, gallery and splash timing.
 
 ### Background music start time
-In `app.js`, `music.currentTime = 98;` starts the song at 1 minute 38 seconds. Change the number to start elsewhere (fast-forward locates near that position).
+By default the song starts from the beginning. To start it from a specific point, add a line like `music.currentTime = 98;` inside `app.js` right after `music.volume` (98 = 1 minute 38 seconds).
 
 ### Curtain animation
 The opening is built with CSS curtains, not a single overlaid image. The curtains start closed and slide outward, with fabric folds, tie-backs, lighting and particles. The names fade in during the opening.

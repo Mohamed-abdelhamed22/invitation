@@ -111,27 +111,23 @@ $('messageForm').addEventListener('submit', async e => {
 const music = $('music');
 const musicToggle = $('musicToggle');
 music.volume = 0.25;
-music.currentTime = 98;
 let musicStarted = false;
 
 function startMusic() {
   if (musicStarted) return;
   music.play().then(() => {
     musicStarted = true;
-    music.currentTime = 98;
     musicToggle.classList.add('playing');
   }).catch(() => {});
 }
 music.play().then(() => {
   musicStarted = true;
-  music.currentTime = 98;
 }).catch(() => {
   musicToggle.classList.remove('playing');
   ['pointerdown', 'keydown', 'scroll', 'touchstart'].forEach(ev => window.addEventListener(ev, startMusic, { once: true }));
 });
 musicToggle.addEventListener('click', () => {
   if (music.paused) {
-    if (!musicStarted) music.currentTime = 98;
     music.play();
     musicStarted = true;
     musicToggle.classList.add('playing');
